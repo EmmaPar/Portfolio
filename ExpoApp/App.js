@@ -55,12 +55,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffe3f3ff', 
   },
   container: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     paddingVertical: 40,
     paddingHorizontal: 16,
   },
   profileSection: {
-    alignItems: 'center',
+    alignItems: 'flex-start',
     marginBottom: 32,
   },
   profileImage: {
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   bio: {
     fontSize: 16,
     color: '#333',
-    textAlign: 'center',
+    textAlign: 'left',
     marginBottom: 8,
   },
   section: {
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#ff7cee',
     marginBottom: 12,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   card: {
     backgroundColor: '#ffe3f3ff',
@@ -125,13 +125,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#ff7cee',
     marginBottom: 6,
-    textAlign: 'center',
+    textAlign: 'left',
   },
   contactLink: {
     fontSize: 16,
     color: '#ff7cee',
     textDecorationLine: 'underline',
     marginBottom: 8,
-    textAlign: 'center',
+    textAlign: 'left',
   },
 });
