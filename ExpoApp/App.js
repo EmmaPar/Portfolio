@@ -4,64 +4,114 @@ import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Linking } 
 
 export default function App() {
   return (
-    <ScrollView style={styles.background} contentContainerStyle={styles.container}>
-      {/* Profile Section */}
-      <View style={styles.profileSection}>
-        <Image
-          source={{ uri: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' }}
-          style={styles.profileImage}
-        />
-        <Text style={styles.name}>Emma Parviainen</Text>
-        <Text style={styles.bio}>A short bio about yourself goes here. Passionate developer and designer.</Text>
-      </View>
+    <View style={styles.pageRow}>
+      <ScrollView style={styles.background} contentContainerStyle={styles.container}>
+        {/* Profile Section */}
+        <View style={styles.profileSection}>
+          <Image
+            source={{ uri: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' }}
+            style={styles.profileImage}
+          />
+          <Text style={styles.name}>Emma Parviainen</Text>
+          <Text style={styles.bio}>Passionate developer and designer. Loves CSS and creating beautiful user experiences.</Text>
+        </View>
 
-      {/* Projects Section */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Projects</Text>
-        <View style={styles.card}>
-          <Text style={styles.cardTitle}>Project Title</Text>
-          <Text style={styles.cardDesc}>Brief description of your project. You can add more cards for other projects.</Text>
+        {/* Projects Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Projects</Text>
+          <View style={styles.card}>
+            <Text style={styles.cardTitle}>Project Title</Text>
+            <Text style={styles.cardDesc}>Worked on GatherHub and own school + private projects</Text>
+          </View>
+        </View>
+
+        {/* Skills Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Skills</Text>
+          <Text style={styles.skill}>React Native</Text>
+          <Text style={styles.skill}>JavaScript</Text>
+          <Text style={styles.skill}>UI/UX Design</Text>
+          <Text style={styles.skill}>CSS</Text>
+          <Text style={styles.skill}>Expo</Text>
+          <Text style={styles.skill}>HTML</Text>
+          <Text style={styles.skill}>C#</Text>
+        </View>
+
+        {/* Contact Section */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Contacts</Text>
+          <TouchableOpacity onPress={() => Linking.openURL('mailto:emma.parviainen10@gmail.com')}>
+            <Text style={styles.contactLink}>Email Me</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL('https://github.com/EmmaPar?tab=repositories')}>
+            <Text style={styles.contactLink}>GitHub</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/not-found-97857b338/')}>
+            <Text style={styles.contactLink}>LinkedIn</Text>
+          </TouchableOpacity>
+        </View>
+        <StatusBar style="auto" />
+      </ScrollView>
+      {/* Big yellow box on the right */}
+      <View style={styles.rightYellowBox}>
+        {/* Pink box inside yellow box */}
+        <View style={styles.innerPinkBox}>
+          {/* You can add content here if needed */}
         </View>
       </View>
-
-      {/* Skills Section */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Skills</Text>
-        <Text style={styles.skill}>React Native</Text>
-        <Text style={styles.skill}>JavaScript</Text>
-        <Text style={styles.skill}>UI/UX Design</Text>
-      </View>
-
-      {/* Contact Section */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Contacts</Text>
-        <TouchableOpacity onPress={() => Linking.openURL('mailto:emma.parviainen10@gmail.com')}>
-          <Text style={styles.contactLink}>Email Me</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Linking.openURL('https://github.com/EmmaPar?tab=repositories')}> 
-          <Text style={styles.contactLink}>GitHub</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => Linking.openURL('https://www.linkedin.com/in/not-found-97857b338/')}> 
-          <Text style={styles.contactLink}>LinkedIn</Text>
-        </TouchableOpacity>
-      </View>
-      <StatusBar style="auto" />
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  pageRow: {
+    flex: 1,
+    flexDirection: 'row',
+    minHeight: '100%',
+    backgroundColor: '#ffe3f3ff',
+    position: 'relative',
+  },
   background: {
     backgroundColor: '#ffe3f3ff', 
   },
   container: {
-    alignItems: 'flex-start',
+    alignItems: 'center',
     paddingVertical: 40,
-    paddingHorizontal: 16,
+    paddingHorizontal: 0,
+    flexGrow: 1,
+    flexShrink: 1,
+    width: '80%',
+    minWidth: 320,
+    maxWidth: 1200,
   },
+rightYellowBox: {
+  width: '50%',
+  marginTop: 170,
+  marginRight: 30,
+  marginLeft: 20,
+  marginBottom: 40,
+  backgroundColor: '#fffde7ff',
+  borderRadius: 16,
+  padding: 30,
+  justifyContent: 'center',
+  alignItems: 'center',
+  shadowColor: '#FFD1DC',
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.2,
+  shadowRadius: 4,
+},
+innerPinkBox: {
+  width: '90%',       
+  height: '85%',
+  backgroundColor: '#ffe3f3ff',
+  borderRadius: 12,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
   profileSection: {
     alignItems: 'flex-start',
     marginBottom: 32,
+    marginLeft: -40,
   },
   profileImage: {
     width: 120,
@@ -85,10 +135,14 @@ const styles = StyleSheet.create({
   },
   section: {
     width: '100%',
+    maxWidth: 5000,
+    alignSelf: 'flex-start',
     marginBottom: 32,
-    backgroundColor: '#fffde7ff', 
+    marginLeft: 30,
+    backgroundColor: '#fffde7ff',
     borderRadius: 16,
     padding: 16,
+    minHeight: 170,
     shadowColor: '#FFD1DC',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -106,6 +160,8 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     padding: 12,
     marginBottom: 10,
+    width: '100%',
+    alignSelf: 'stretch',
     shadowColor: '#ff7cee',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
@@ -123,13 +179,13 @@ const styles = StyleSheet.create({
   },
   skill: {
     fontSize: 16,
-    color: '#ff7cee',
+    color: '#c75ab8ff',
     marginBottom: 6,
     textAlign: 'left',
   },
   contactLink: {
     fontSize: 16,
-    color: '#ff7cee',
+    color: '#c75ab8ff',
     textDecorationLine: 'underline',
     marginBottom: 8,
     textAlign: 'left',
