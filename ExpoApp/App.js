@@ -1,6 +1,81 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Linking, FlatList } from 'react-native';
+import React, { useState, useRef } from 'react';
 
+const images = [
+  { uri: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
+  { uri: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
+  { uri: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' },
+  { uri: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80' },
+];
+
+function ImageSlider() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const flatListRef = useRef(null);
+
+  const goToPrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(currentIndex - 1);
+      flatListRef.current.scrollToIndex({ index: currentIndex - 1 });
+    }
+  };
+  const goToNext = () => {
+    if (currentIndex < images.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+      flatListRef.current.scrollToIndex({ index: currentIndex + 1 });
+    }
+  };
+
+  return (
+    <View style={{ flex: 1, width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', position: 'relative', flexDirection: 'row' }}>
+      {/* Left Arrow in yellow box */}
+      <TouchableOpacity
+        onPress={goToPrev}
+        disabled={currentIndex === 0}
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '80%',
+          width: 48,
+        }}
+      >
+        <Text style={{ fontSize: 48, color: currentIndex === 0 ? '#ccc' : '#c75ab8ff' }}>{'<'}</Text>
+      </TouchableOpacity>
+
+      {/* Image, centered, not touching edges */}
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: '80%' }}>
+        <Image
+          source={images[currentIndex]}
+          style={{
+            width: '92%',
+            height: '100%',
+            borderRadius: 24,
+            resizeMode: 'cover',
+            backgroundColor: '#fffde7ff',
+          }}
+        />
+        {/* Text below image, in yellow box */}
+        <Text style={{ marginTop: 18, color: '#c75ab8ff', fontSize: 16, textAlign: 'center' }}>
+          Image {currentIndex + 1} of {images.length}
+        </Text>
+      </View>
+
+      {/* Right Arrow in yellow box */}
+      <TouchableOpacity
+        onPress={goToNext}
+        disabled={currentIndex === images.length - 1}
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '80%',
+          width: 48,
+        }}
+      >
+        <Text style={{ fontSize: 48, color: currentIndex === images.length - 1 ? '#ccc' : '#c75ab8ff' }}>{'>'}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
 
 export default function App() {
   return (
@@ -56,7 +131,8 @@ export default function App() {
       <View style={styles.rightYellowBox}>
         {/* Pink box inside yellow box */}
         <View style={styles.innerPinkBox}>
-          {/* You can add content here if needed */}
+          {/* Image Slider with Arrows */}
+          <ImageSlider />
         </View>
       </View>
     </View>
