@@ -42,7 +42,6 @@ function ImageSlider() {
         <Text style={{ fontSize: 48, color: currentIndex === 0 ? '#ccc' : '#c75ab8ff' }}>{'<'}</Text>
       </TouchableOpacity>
 
-      {/* Image, centered, not touching edges */}
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: '80%' }}>
         <Image
           source={images[currentIndex]}
@@ -54,13 +53,11 @@ function ImageSlider() {
             backgroundColor: '#fffde7ff',
           }}
         />
-        {/* Text below image, in yellow box */}
-        <Text style={{ marginTop: 18, color: '#c75ab8ff', fontSize: 16, textAlign: 'center' }}>
+        <Text style={{ marginTop: 18, color: '#c75ab8ff', fontSize: 16, textAlign: 'center', marginBottom: -32}}>
           Image {currentIndex + 1} of {images.length}
         </Text>
       </View>
 
-      {/* Right Arrow in yellow box */}
       <TouchableOpacity
         onPress={goToNext}
         disabled={currentIndex === images.length - 1}
