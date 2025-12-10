@@ -3,10 +3,10 @@ import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Linking, F
 import React, { useState, useRef } from 'react';
 
 const images = [
-  { uri: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80' },
-  { uri: 'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80' },
-  { uri: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80' },
-  { uri: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80' },
+  require('./assets/bookedevents.png'),
+  require('./assets/allevents.png'),
+  require('./assets/register.png'),
+  require('./assets/Basicprofile.png'),
 ];
 
 function ImageSlider() {
