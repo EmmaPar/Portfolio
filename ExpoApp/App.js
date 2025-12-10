@@ -42,19 +42,22 @@ function ImageSlider() {
         <Text style={{ fontSize: 48, color: currentIndex === 0 ? '#ccc' : '#c75ab8ff' }}>{'<'}</Text>
       </TouchableOpacity>
 
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: '80%' }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', height: '88%' }}>
         <Image
           source={images[currentIndex]}
           style={{
-            width: '92%',
-            height: '100%',
+            width: '100%',
+            height: '75%',
             borderRadius: 24,
             resizeMode: 'cover',
             backgroundColor: '#fffde7ff',
           }}
         />
-        <Text style={{ marginTop: 18, color: '#c75ab8ff', fontSize: 16, textAlign: 'center', marginBottom: -32}}>
+        <Text style={{ marginTop: 18, color: '#c75ab8ff', fontSize: 16, textAlign: 'center' }}>
           Image {currentIndex + 1} of {images.length}
+        </Text>
+        <Text style={{ marginTop: 8, color: '#c75ab8ff', fontSize: 24, textAlign: 'center', fontWeight: 'bold', marginBottom: -4 }}>
+          screens i worked on
         </Text>
       </View>
 
