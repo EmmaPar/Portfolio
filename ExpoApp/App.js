@@ -28,7 +28,6 @@ function ImageSlider() {
 
   return (
     <View style={{ flex: 1, width: '100%', height: '100%', justifyContent: 'center', alignItems: 'center', position: 'relative', flexDirection: 'row' }}>
-      {/* Left Arrow in yellow box */}
       <TouchableOpacity
         onPress={goToPrev}
         disabled={currentIndex === 0}
